@@ -84,9 +84,8 @@ export class UpdateRestaurantDto {
 - `process.env` 값은 항상 `string | undefined`; 숫자형은 `+process.env.SOME_PORT!` 사용 (Joi 검증으로 런타임에는 존재 보장)
 - 서버 포트: `process.env.PORT ?? 3000`
 
-### 알려진 오타 (의도적으로 유지 중)
-- `UdateRestaurantDto` — "Update" 오타 (`update-restaurant.dto.ts`)
-- `restaurnatService` — resolver 생성자 내 변수명 오타
+### 알려진 오타
+- `restaurnatService` — resolver 생성자 내 변수명 오타 (수정 예정)
 
 ### 미구현 (예정)
 - 인증: `jsonwebtoken`, `bcrypt` 의존성 설치됨 — JWT/Auth 모듈 미구현
