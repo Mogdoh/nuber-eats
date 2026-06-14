@@ -14,16 +14,17 @@ export class UsersService {
     email,
     password,
     role,
-  }: CreateAccountInput): Promise<string | undefined> {
+  }: CreateAccountInput): Promise<{ ok: boolean; error?: string }> {
     try {
       const exists = await this.users.findOne({ where: { email } });
       if (exists) {
         //make error
-        return '동일한 이메일의 아이디가 존재합니다.';
+        return { ok: false, error: '동일한 이메일의 아이디가 존재합니다.' };
       }
       await this.users.save(this.users.create({ email, password, role }));
+      return { ok: true };
     } catch (e) {
-      return '계정을 생상하지 못하였습니다.';
+      return { ok: false, error: '계정을 생상하지 못하였습니다.' };
     }
     // check new user
     // create user & hash password
